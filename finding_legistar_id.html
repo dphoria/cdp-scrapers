@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Contributing &mdash; cdp-scrapers 0.2.1 documentation</title>
+  <title>Searching for Your Municipality’s Legistar ID &mdash; cdp-scrapers 0.2.1 documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -18,8 +18,8 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="cdp_scrapers.instances.empty.get_events" href="cdp_scrapers.instances.empty.get_events.html" />
-    <link rel="prev" title="cdp_scrapers.instances package" href="cdp_scrapers.instances.html" /> 
+    <link rel="next" title="Notes on LegistarScraper" href="legistar_scraper.html" />
+    <link rel="prev" title="Installation" href="installation.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -48,7 +48,7 @@
 <li class="toctree-l2"><a class="reference internal" href="installation.html#from-sources">From sources</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="finding_legistar_id.html">Searching for your Municipality's Legistar ID</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Searching for your Municipality's Legistar ID</a></li>
 <li class="toctree-l1"><a class="reference internal" href="legistar_scraper.html">LegistarScraper</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="legistar_scraper.html#filtering">Filtering</a></li>
 <li class="toctree-l2"><a class="reference internal" href="legistar_scraper.html#legistar-to-cdp-ingestionmodel">Legistar to CDP <code class="docutils literal notranslate"><span class="pre">IngestionModel</span></code></a></li>
@@ -73,9 +73,9 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Contributing</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#get-started">Get Started!</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#deploying">Deploying</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contributing.html">Contributing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="contributing.html#get-started">Get Started!</a></li>
+<li class="toctree-l2"><a class="reference internal" href="contributing.html#deploying">Deploying</a></li>
 </ul>
 </li>
 </ul>
@@ -99,75 +99,49 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
-      <li>Contributing</li>
+      <li>Searching for Your Municipality’s Legistar ID</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="_sources/contributing.rst.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/finding_legistar_id.rst.txt" rel="nofollow"> View page source</a>
       </li>
   </ul><div class="rst-breadcrumbs-buttons" role="navigation" aria-label="Sequential page navigation">
-        <a href="cdp_scrapers.instances.html" class="btn btn-neutral float-left" title="cdp_scrapers.instances package" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="cdp_scrapers.instances.empty.get_events.html" class="btn btn-neutral float-right" title="cdp_scrapers.instances.empty.get_events" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="installation.html" class="btn btn-neutral float-left" title="Installation" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="legistar_scraper.html" class="btn btn-neutral float-right" title="Notes on LegistarScraper" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
   </div>
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="contributing">
-<h1>Contributing<a class="headerlink" href="#contributing" title="Permalink to this headline"></a></h1>
-<p>Contributions are welcome, and they are greatly appreciated! Every little bit
-helps, and credit will always be given.</p>
-<section id="get-started">
-<h2>Get Started!<a class="headerlink" href="#get-started" title="Permalink to this headline"></a></h2>
-<p>Ready to contribute? Here’s how to set up <code class="docutils literal notranslate"><span class="pre">cdp-scrapers</span></code> for local development.</p>
+  <section id="searching-for-your-municipality-s-legistar-id">
+<h1>Searching for Your Municipality’s Legistar ID<a class="headerlink" href="#searching-for-your-municipality-s-legistar-id" title="Permalink to this headline"></a></h1>
+<p>Legistar is the most widely used legislation tracking tool in the nation. We are
+leveraging Legistar’s wide coverage to help standardize and streamline part of our
+onboarding process by creating generalized Legistar scrapers so you can potentially
+skip the step of creating an event scraper. Unfortunately a municipality’s Legistar ID
+isn’t always easily discoverable so here are some steps to find it.</p>
 <ol class="arabic">
-<li><p>Fork the <code class="docutils literal notranslate"><span class="pre">cdp-scrapers</span></code> repo on GitHub.</p></li>
-<li><p>Clone your fork locally:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git clone git@github.com:<span class="o">{</span>your_name_here<span class="o">}</span>/cdp-scrapers.git
-</pre></div>
-</div>
+<li><p>Go to your municipality’s council page and locate the meeting agendas.</p></li>
+<li><p>Look at the URL of the website and if it contains “legistar”, then your
+municipality uses Legistar. If it does not, your municipality likely does not use
+Legistar and you should review step three for another method for determining if your
+municipality utilizes Legistar.<span class="raw-html-m2r"><br></span></p>
+<a class="reference external image-reference" href="./images/seattle_legistar_url.png"><img alt="Legistar ID for Seattle" src="images/seattle_legistar_url.png" /></a>
 </li>
-<li><p>Install the project in editable mode. (It is also recommended to work in a virtualenv or anaconda environment):</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> cdp-scrapers/
-pip install -e .<span class="o">[</span>dev<span class="o">]</span>
-</pre></div>
-</div>
-</li>
-<li><p>Create a branch for local development:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>   git checkout -b <span class="o">{</span>your_development_type<span class="o">}</span>/short-description
-
-Ex: feature/read-tiff-files or bugfix/handle-file-not-found<span class="se">\ </span>:raw-html-m2r:<span class="sb">`</span>&lt;br&gt;<span class="sb">`</span>
-Now you can make your changes locally.
-</pre></div>
-</div>
-</li>
-<li><p>When you’re done making changes, check that your changes pass linting and
-tests, including testing other Python versions with make:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>make build
-</pre></div>
-</div>
-</li>
-<li><p>Commit your changes and push your branch to GitHub:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git add .
-git commit -m <span class="s2">&quot;Resolves gh-###. Your detailed description of your changes.&quot;</span>
-git push origin <span class="o">{</span>your_development_type<span class="o">}</span>/short-description
-</pre></div>
-</div>
-</li>
-<li><p>Submit a pull request through the GitHub website.</p></li>
+<li><p>If step 2 fails, try an online search with query words such as “Legistar
+municipality council agendas”. If your municipality uses Legistar, the top search
+results will likely include URLs like “<a href="#id1"><span class="problematic" id="id2">*</span></a>.legistar.com”.<span class="raw-html-m2r"><br></span>
+For example, top results for “Seattle council Legistar agendas” include
+<a class="reference external" href="https://seattle.legistar.com/Calendar.aspx">https://seattle.legistar.com/Calendar.aspx</a>.</p></li>
+<li><p>The Legistar ID is the substring before “.legistar.com.” In the example above, the
+Legistar ID would be “seattle.”</p></li>
+<li><p>To verify your Legistar ID, you can test it out on the Legistar test client:
+<a class="reference external" href="https://webapi.legistar.com/Help/Api/GET-v1-Client-Bodies">https://webapi.legistar.com/Help/Api/GET-v1-Client-Bodies</a>.
+Click on “Test API” in the lower right corner, set “{Client}” equal to what you think
+is the Legistar key and click “Send”. If you get back any error message, it is likely
+that while your municipality uses Legistar, the data isn’t made publically available
+or they use a different key.</p></li>
+<li><p>For more detailed Legistar information, please contact your municipality clerk.</p></li>
 </ol>
-</section>
-<section id="deploying">
-<h2>Deploying<a class="headerlink" href="#deploying" title="Permalink to this headline"></a></h2>
-<p>A reminder for the maintainers on how to deploy.
-Make sure all your changes are committed.
-Then run:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>bump2version patch <span class="c1"># possible: major / minor / patch</span>
-git push
-git push --tags
-</pre></div>
-</div>
-<p>This will release a new package version on Git + GitHub and publish to PyPI.</p>
-</section>
 </section>
 
 
