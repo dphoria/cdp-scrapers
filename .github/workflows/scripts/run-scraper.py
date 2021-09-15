@@ -87,6 +87,7 @@ def save_events(get_events_name: str, from_dt_str: str, to_dt_str: str) -> None:
         results_file.write(
             f"`--from_dt={from_dt.isoformat()} "
             f"--to_dt={to_dt.isoformat()} "
+            "PR  \n"
             f"{get_events_name}`  \n\n"
             "```json\n"
             f"{events_json}\n"
