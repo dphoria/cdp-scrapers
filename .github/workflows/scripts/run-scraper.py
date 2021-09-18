@@ -79,6 +79,7 @@ def save_events(get_events_name: str, from_dt_str: str, to_dt_str: str) -> None:
 
     with open(PARAMS_FILE, "wt") as params_file:
         params_file.write(
+            "From PR\n"
             f"--from_dt={from_dt.isoformat()} "
             f"--to_dt={to_dt.isoformat()} "
             f"{get_events_name}\n"
