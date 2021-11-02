@@ -35,7 +35,10 @@
       ~LegistarScraper.get_sponsors
       ~LegistarScraper.get_vote_decision
       ~LegistarScraper.get_votes
+      ~LegistarScraper.inject_known_data
+      ~LegistarScraper.inject_known_person
       ~LegistarScraper.localize_datetime
+      ~LegistarScraper.post_process_ingestion_models
    
    
 
