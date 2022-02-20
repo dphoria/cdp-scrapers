@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>cdp_scrapers.instances.seattle &mdash; cdp-scrapers 0.3.4 documentation</title>
+  <title>cdp_scrapers.instances.seattle &mdash; cdp-scrapers 0.3.5 documentation</title>
       <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -27,7 +27,7 @@
             <a href="../../../index.html" class="icon icon-home"> cdp-scrapers
           </a>
               <div class="version">
-                0.3.4
+                0.3.5
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
@@ -248,9 +248,16 @@
         <span class="c1"># ...</span>
 
         <span class="c1"># entire script tag text that has the video player setup call</span>
-        <span class="n">video_script_text</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">find</span><span class="p">(</span>
+        <span class="n">video_script_block</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">find</span><span class="p">(</span>
             <span class="s2">&quot;script&quot;</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;playerInstance\.setup&quot;</span><span class="p">)</span>
-        <span class="p">)</span><span class="o">.</span><span class="n">string</span>
+        <span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">video_script_block</span><span class="p">:</span>
+            <span class="n">log</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;Couldn&#39;t find &#39;playerInstance.setup()&#39; block on </span><span class="si">{</span><span class="n">video_page_url</span><span class="si">}</span><span class="s2">.</span><span class="se">\n</span><span class="s2">&quot;</span>
+                <span class="s2">&quot;seattlechannel.org may have changed their video page html&quot;</span>
+            <span class="p">)</span>
+            <span class="k">return</span> <span class="p">[]</span>
+        <span class="n">video_script_text</span> <span class="o">=</span> <span class="n">video_script_block</span><span class="o">.</span><span class="n">string</span>
 
         <span class="c1"># halt if event date not in video&#39;s idstring</span>
         <span class="c1"># likely means some change on video web page source / script</span>
