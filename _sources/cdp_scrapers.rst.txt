@@ -12,14 +12,6 @@ Subpackages
 Submodules
 ----------
 
-cdp\_scrapers.civic\_scraper\_utils module
-------------------------------------------
-
-.. automodule:: cdp_scrapers.civic_scraper_utils
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
 cdp\_scrapers.legistar\_content\_parsers module
 -----------------------------------------------
 
