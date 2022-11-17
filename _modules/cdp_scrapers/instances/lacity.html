@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>cdp_scrapers.instances.empty &mdash; cdp-scrapers 0.5.0 documentation</title>
+  <title>cdp_scrapers.instances.lacity &mdash; cdp-scrapers 0.5.0 documentation</title>
   
 
   
@@ -235,7 +235,7 @@
         
           <li><a href="../../cdp_scrapers.html">cdp_scrapers</a> &raquo;</li>
         
-      <li>cdp_scrapers.instances.empty</li>
+      <li>cdp_scrapers.instances.lacity</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -250,47 +250,68 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <h1>Source code for cdp_scrapers.instances.empty</h1><div class="highlight"><pre>
+  <h1>Source code for cdp_scrapers.instances.lacity</h1><div class="highlight"><pre>
 <span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1"># -*- coding: utf-8 -*-</span>
 
+<span class="kn">import</span> <span class="nn">logging</span>
 <span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
-<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Optional</span>
 
 <span class="kn">from</span> <span class="nn">cdp_backend.pipeline.ingestion_models</span> <span class="kn">import</span> <span class="n">EventIngestionModel</span>
+
+<span class="kn">from</span> <span class="nn">..prime_gov_utils</span> <span class="kn">import</span> <span class="n">PrimeGovScraper</span>
+
+<span class="c1">###############################################################################</span>
+
+<span class="n">log</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
 
 <span class="c1">###############################################################################</span>
 
 
-<div class="viewcode-block" id="get_events"><a class="viewcode-back" href="../../../cdp_scrapers.instances.empty.get_events.html#cdp_scrapers.instances.empty.get_events">[docs]</a><span class="k">def</span> <span class="nf">get_events</span><span class="p">(</span>
-    <span class="n">from_dt</span><span class="p">:</span> <span class="n">datetime</span><span class="p">,</span>
-    <span class="n">to_dt</span><span class="p">:</span> <span class="n">datetime</span><span class="p">,</span>
-    <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
+<div class="viewcode-block" id="LosAngelesScraper"><a class="viewcode-back" href="../../../cdp_scrapers.instances.html#cdp_scrapers.instances.lacity.LosAngelesScraper">[docs]</a><span class="k">class</span> <span class="nc">LosAngelesScraper</span><span class="p">(</span><span class="n">PrimeGovScraper</span><span class="p">):</span>
+    <span class="n">PYTHON_MUNICIPALITY_SLUG</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;lacity&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        LA, CA specific implementation of PrimeGovScraper.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
+            <span class="n">client_id</span><span class="o">=</span><span class="s2">&quot;lacity&quot;</span><span class="p">,</span>
+            <span class="n">timezone</span><span class="o">=</span><span class="s2">&quot;America/Los_Angeles&quot;</span><span class="p">,</span>
+        <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="get_lacity_events"><a class="viewcode-back" href="../../../cdp_scrapers.instances.html#cdp_scrapers.instances.lacity.get_lacity_events">[docs]</a><span class="k">def</span> <span class="nf">get_lacity_events</span><span class="p">(</span>
+    <span class="n">from_dt</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">datetime</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">to_dt</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">datetime</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">EventIngestionModel</span><span class="p">]:</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Get all events for the provided timespan.</span>
+<span class="sd">    Public API for use in instances.__init__ so that this func can be attached</span>
+<span class="sd">    as an attribute to cdp_scrapers.instances module.</span>
+<span class="sd">    Thus the outside world like cdp-backend can get at this by asking for</span>
+<span class="sd">    &quot;get_lacity_events&quot;.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
-<span class="sd">    from_dt: datetime</span>
-<span class="sd">        Datetime to start event gather from.</span>
-<span class="sd">    to_dt: datetime</span>
-<span class="sd">        Datetime to end event gather at.</span>
+<span class="sd">    from_dt: datetime, optional</span>
+<span class="sd">        The timespan beginning datetime to query for events after.</span>
+<span class="sd">        Default is 2 days from UTC now</span>
+<span class="sd">    to_dt: datetime, optional</span>
+<span class="sd">        The timespan end datetime to query for events before.</span>
+<span class="sd">        Default is UTC now</span>
 
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
 <span class="sd">    events: List[EventIngestionModel]</span>
-<span class="sd">        All events gathered that occured in the provided time range.</span>
 
-<span class="sd">    Notes</span>
-<span class="sd">    -----</span>
-<span class="sd">    As the implimenter of the get_events function, you can choose to ignore the from_dt</span>
-<span class="sd">    and to_dt parameters. However, they are useful for manually kicking off pipelines</span>
-<span class="sd">    from GitHub Actions UI.</span>
+<span class="sd">    See Also</span>
+<span class="sd">    --------</span>
+<span class="sd">    cdp_scrapers.instances.__init__.py</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-
-    <span class="c1"># Your implementation here</span>
-    <span class="k">return</span> <span class="p">[]</span></div>
+    <span class="n">scraper</span> <span class="o">=</span> <span class="n">LosAngelesScraper</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">scraper</span><span class="o">.</span><span class="n">get_events</span><span class="p">(</span><span class="n">begin</span><span class="o">=</span><span class="n">from_dt</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="n">to_dt</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
 </pre></div>
 
            </div>
