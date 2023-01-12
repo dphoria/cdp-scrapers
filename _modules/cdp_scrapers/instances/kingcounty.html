@@ -32,9 +32,6 @@
     
       <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
         <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
-        <script src="../../../_static/jquery.js"></script>
-        <script src="../../../_static/underscore.js"></script>
-        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../../_static/doctools.js"></script>
         <script src="../../../_static/sphinx_highlight.js"></script>
     
@@ -254,21 +251,19 @@
 <span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1"># -*- coding: utf-8 -*-</span>
 
+<span class="kn">import</span> <span class="nn">json</span>
 <span class="kn">import</span> <span class="nn">logging</span>
 <span class="kn">import</span> <span class="nn">re</span>
-<span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
 <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Dict</span>
 <span class="kn">from</span> <span class="nn">urllib.request</span> <span class="kn">import</span> <span class="n">urlopen</span>
-<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
 
 <span class="kn">from</span> <span class="nn">bs4</span> <span class="kn">import</span> <span class="n">BeautifulSoup</span>
-
-<span class="kn">from</span> <span class="nn">cdp_backend.pipeline.ingestion_models</span> <span class="kn">import</span> <span class="n">Person</span><span class="p">,</span> <span class="n">Seat</span>
 <span class="kn">from</span> <span class="nn">cdp_backend.database.constants</span> <span class="kn">import</span> <span class="n">RoleTitle</span>
-<span class="kn">from</span> <span class="nn">..legistar_utils</span> <span class="kn">import</span> <span class="p">(</span>
-    <span class="n">LegistarScraper</span><span class="p">,</span>
-<span class="p">)</span>
-<span class="kn">from</span> <span class="nn">..scraper_utils</span> <span class="kn">import</span> <span class="n">str_simplified</span><span class="p">,</span> <span class="n">parse_static_file</span>
+<span class="kn">from</span> <span class="nn">cdp_backend.pipeline.ingestion_models</span> <span class="kn">import</span> <span class="n">Person</span><span class="p">,</span> <span class="n">Seat</span>
+
+<span class="kn">from</span> <span class="nn">..legistar_utils</span> <span class="kn">import</span> <span class="n">LegistarScraper</span>
+<span class="kn">from</span> <span class="nn">..scraper_utils</span> <span class="kn">import</span> <span class="n">parse_static_file</span><span class="p">,</span> <span class="n">str_simplified</span>
 
 <span class="c1">###############################################################################</span>
 
@@ -286,7 +281,7 @@
     <span class="n">PYTHON_MUNICIPALITY_SLUG</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;king_county&quot;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        King County specific implementation of LegistarScraper.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
@@ -324,7 +319,7 @@
 
 <div class="viewcode-block" id="KingCountyScraper.get_static_person_info"><a class="viewcode-back" href="../../../cdp_scrapers.instances.html#cdp_scrapers.instances.kingcounty.KingCountyScraper.get_static_person_info">[docs]</a>    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">get_static_person_info</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Person</span><span class="p">]:</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Scrape current council members information from kingcounty.gov</span>
 
 <span class="sd">        Returns</span>
@@ -400,7 +395,7 @@
 
 <div class="viewcode-block" id="KingCountyScraper.dump_static_info"><a class="viewcode-back" href="../../../cdp_scrapers.instances.html#cdp_scrapers.instances.kingcounty.KingCountyScraper.dump_static_info">[docs]</a>    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">dump_static_info</span><span class="p">(</span><span class="n">file_path</span><span class="p">:</span> <span class="n">Path</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Call this to save current council members information as Persons</span>
 <span class="sd">        in json format to file_path.</span>
 <span class="sd">        Intended to be called once every N years when the council changes.</span>
